@@ -99,7 +99,7 @@ if(!defined('IN_APP')){
             if(!empty($expenses['server'])):
             ?>
             <h5>如果采用租用服务器</h5>
-                <p>需要的总端口速率大概为：<?php echo $need_rate; ?> Mbps</p>
+                <p>需要的峰值端口速率大概为：<?php echo $need_rate; ?> Mbps</p>
                 <table class="table table-striped">
                     <thead>
                         <tr>
