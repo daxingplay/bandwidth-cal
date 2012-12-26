@@ -31,7 +31,12 @@ if($size && $pv && $_POST['form_submit'] == 'true'){
         $total_display = number_format($total_gb, 2) . 'GB';
     }
 
+    // 需要的端口速率
+    $need_rate = number_format(cal_bandwidth_rate($total_mb), 0);
+    $need_rate = $need_rate >= 1 ? $need_rate : 1;
+
     $expenses = array();
+    $expense_sum = 0;
 
     if(!empty($services)){
         foreach($services as $name => $service){
@@ -48,7 +53,6 @@ if($size && $pv && $_POST['form_submit'] == 'true'){
                     );
                     break;
                 case 'server':
-                    $need_rate = number_format(cal_bandwidth_rate($total_mb), 0);
                     $price = array(
                         'server' => $real_pv / $price_array['server'][0] * $price_array['server'][1],
                         'bandwidth' =>  cal_ladder_price($need_rate, $price_array['bandwidth'])
@@ -60,8 +64,17 @@ if($size && $pv && $_POST['form_submit'] == 'true'){
             $price['total_year'] = $price['total_month'] * 12;
             $price = format_expenses($price, $price_array['unit']);
             $expenses[$type][$name] = $price;
+
+            $expense_sum += $price['total'];
         }
     }
+
+    $expense_sum = number_format($expense_sum, 2);
+    $expense_sum_month = number_format($expense_sum * 30, 2);
+    $expense_sum_year = number_format($expense_sum_month * 12, 2);
+
+    $total_services = count($services);
+    $expense_average = number_format($expense_sum / $total_services, 2);
 }
 
 include('./template/index.tpl.php');

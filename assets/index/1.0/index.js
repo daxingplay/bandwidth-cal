@@ -13,4 +13,21 @@
         $('#J_PVUnitShow').html($(this).text());
     });
 
+    var showResultBtn = $('#J_ShowFullResult'),
+        hideResultBtn = $('#J_HideFullResult'),
+        fullResult = $('#J_FullResult');
+    showResultBtn.on('click', function(ev){
+        ev.preventDefault();
+        showResultBtn.hide();
+        hideResultBtn.show();
+        fullResult.fadeIn();
+    });
+
+    hideResultBtn.on('click', function(ev){
+        ev.preventDefault();
+        hideResultBtn.hide();
+        showResultBtn.show();
+        fullResult.fadeOut();
+    })
+
 })(jQuery);

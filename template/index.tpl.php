@@ -17,6 +17,7 @@ if(!defined('IN_APP')){
     <title>流量计算器</title>
     <link rel="stylesheet" type="text/css" href="<?php echo $_G['assets']; ?>common/base.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $_G['assets']; ?>bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $_G['assets']; ?>index/1.0/index.css" />
 </head>
 <body>
 
@@ -28,14 +29,14 @@ if(!defined('IN_APP')){
                 <div class="control-group">
                     <label class="control-label" for="J_PageSize">页面大小</label>
                     <div class="controls">
-                        <input id="J_PageSize" type="text" name="size" value="<?php echo $size; ?>" placeholder="填写页面大小，也可以填写你节省的大小" /> KB
+                        <input id="J_PageSize" type="text" name="size" value="<?php echo $size ? $size : ''; ?>" placeholder="页面大小或者你节省的大小" /> KB
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="J_PageViews">日均PV</label>
                     <div class="controls">
                         <div class="input-append">
-                            <input id="J_PageViews" type="text" name="pv" value="<?php echo $pv; ?>" placeholder="每日PV数" />
+                            <input id="J_PageViews" type="text" name="pv" value="<?php echo $pv ? $pv : ''; ?>" placeholder="每日PV数" />
                             <input id="J_PVUnitInput" type="hidden" name="pv_unit" value="<?php echo $pv_unit; ?>" />
                             <div class="btn-group">
                                 <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -91,9 +92,14 @@ if(!defined('IN_APP')){
         <?php
             if(!empty($expenses)):
         ?>
-        <div class="expenses">
-            <h3>计算结果</h3>
-            <p>总共需要流量：<?php echo $total_display; ?></p>
+        <div id="J_Result" class="expenses-result">
+            <p>总共需要流量：<em class="total-bandwidth"><?php echo $total_display; ?></em></p>
+            <p>总共需要花费约为<span class="yen">&yen;</span><em class="total-guess"><?php echo $expense_average; ?></em><span class="unit">/天</span></p>
+            <a id="J_ShowFullResult" class="toggle-result" href="#">显示详细结果<i class="icon-arrow-down"></i></a>
+            <a id="J_HideFullResult" class="toggle-result hide-full-result" href="#">隐藏详细结果<i class="icon-arrow-up"></i></a>
+        </div>
+        <div id="J_FullResult" class="expenses-full-result">
+            <h3>详细结果</h3>
 
             <?php
             if(!empty($expenses['server'])):
@@ -126,7 +132,9 @@ if(!defined('IN_APP')){
                     ?>
                     </tbody>
                 </table>
-                <p>PS: 以上服务器的配置大概以单台：双核、内存2G、硬盘150G为准；</p>
+                <p>
+                    <small>PS: 以上服务器的配置大概以单台：双核Xeon、内存2G、硬盘150G、多线BGP带宽为准；</small>
+                </p>
             <?php
             endif;
             ?>
@@ -168,6 +176,9 @@ if(!defined('IN_APP')){
             <?php
             endif;
             ?>
+            <blockquote>
+                <p class="ps-words">以上计算结果仅供参考，在实际情况中，需要考虑到网站程序、机器性能等多方面因素。本计算结果主要是以静态文件为准；</p>
+            </blockquote>
         </div>
         <?php
             endif;

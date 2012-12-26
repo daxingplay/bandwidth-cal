@@ -1,0 +1,35 @@
+/**
+ * index
+ * @author: daxingplay<daxingplay@gmail.com>
+ * @date: 12-12-25
+ */
+.expenses-full-result,
+.hide-full-result {
+    display: none;
+}
+.expenses-result {
+    text-align: center;
+}
+.expenses-result p {
+    padding: 15px 0;
+}
+.expenses-result em {
+    font-style: normal;
+    font-weight: bold;
+}
+.expenses-result .total-bandwidth {
+    font-size: 24px;
+    color: #3A87AD;
+}
+.expenses-result .total-guess {
+    font-size: 60px;
+    color: #F60;
+}
+.expenses-result .yen {
+    font-size: 40px;
+    color: #666;
+}
+
+.ps-words {
+    font-size: 12px;
+}

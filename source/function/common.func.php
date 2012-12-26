@@ -55,7 +55,7 @@ function format_expenses($expense, $unit = ''){
 }
 
 function cal_bandwidth_rate($total_mb){
-    return $total_mb / 3 * 2 / 12 / 60 / 60 * 8;
+    return $total_mb / 3 * 2 / 12 / 60 / 60 * 8 * 1.5;
 }
 
 function _get_script_url() {

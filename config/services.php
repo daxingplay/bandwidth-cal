@@ -9,13 +9,38 @@
 $services = array(
     'aliyun_ec' => array(
         'name' => '阿里云云服务器',
-        'link' => '',
+        'link' => '#',
         'type' => 'server',
         'prices' => array(
             // 0为能支持的最大PV数，1为这个服务器配置的每日的价钱
-            'server' => array('200000', 3999 / 365),
+            'server' => array(200000, 3999 / 365),
             'bandwidth' => array(
                 '1' => 100 / 30
+            )
+        )
+    ),
+    'fdcservers' => array(
+        'name' => '美国FDC',
+        'link' => '#',
+        'type' => 'server',
+        'prices' => array(
+            'unit' => 'dollar',
+            'server' => array(200000, 69 / 30),
+            'bandwidth' => array(
+                '10' => 0,
+                '100' => 40 / 30,
+                '1000' => 140 / 30
+            )
+        )
+    ),
+    'old_server' => array(
+        'name' => '传统服务器',
+        'link' => '#',
+        'type' => 'server',
+        'prices' => array(
+            'server' => array(200000, 6000 / 365),
+            'bandwidth' => array(
+                '1' => 300 / 30
             )
         )
     ),
