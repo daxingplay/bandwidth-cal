@@ -19,6 +19,23 @@ $services = array(
             )
         )
     ),
+    'grandcloud_server' => array(
+        'name' => '盛大云云主机',
+        'link' => '#',
+        'type' => 'server',
+        'prices' => array(
+            'server' => array(200000, 0.33 * 24),
+            'bandwidth' => array(
+                '2' => 0.3 * 24,
+                '5' => 0.6 * 24,
+                '10' => 1.1 * 24,
+                '20' => 2.1 * 24,
+                '50' => 5.1 * 24,
+                '100' => 10.1 * 24,
+                '200' => 20.1 * 24
+            )
+        )
+    ),
     'fdcservers' => array(
         'name' => '美国FDC',
         'link' => '#',
@@ -116,6 +133,40 @@ $services = array(
             ),
             'request' => array(
                 'get' => 0,
+                'other' => 0
+            )
+        )
+    ),
+    'grandcloud_yunfenfa' => array(
+        'name' => '盛大云云分发',
+        'link' => 'http://www.grandcloud.cn/index/price#price_yunfenfa',
+        'type' => 'cdn',
+        'prices' => array(
+            'unit' => 'RMB',
+            // 硬盘的价格是按天计算的
+            'storage' => array(
+                '1' => 1 / 30
+            ),
+            'bandwidth_in' => 0,
+            // 流出流量是按照GB计算的
+            'bandwidth_out' => array(
+                '1' => 1.4,
+                '11' => 1,
+                '61' => 0.7,
+                '261' => 0.5,
+                '1285' => 0.4,
+                '11525' => 0.35,
+                '62725' => 0.32,
+                '165125' => 0.3
+            ),
+            'request' => array(
+                'get' => array(
+                    '10000' => 0.1 /10000,
+                    '1000000' => 0.05 / 10000,
+                    '10000000' => 0.02 / 10000,
+                    '100000000' => 0.009 / 10000,
+                    '1000000000' => 0.006 / 10000,
+                ),
                 'other' => 0
             )
         )

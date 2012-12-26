@@ -106,6 +106,13 @@ if(!defined('IN_APP')){
             ?>
             <h5>如果采用租用服务器</h5>
                 <p>需要的峰值端口速率大概为：<?php echo $need_rate; ?> Mbps</p>
+                <?php
+                if($total_mb < 100):
+                ?>
+                    <p class="text-warning">就这点流量采取租用服务器策略很不划算的。</p>
+                <?php
+                endif;
+                ?>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -132,9 +139,9 @@ if(!defined('IN_APP')){
                     ?>
                     </tbody>
                 </table>
-                <p>
-                    <small>PS: 以上服务器的配置大概以单台：双核Xeon、内存2G、硬盘150G、多线BGP带宽为准；</small>
-                </p>
+                <blockquote>
+                    <p class="ps-words">以上服务器的配置大概以单台：双核Xeon、内存2G、多线BGP带宽、Linux系统为准；端口速率计算假设每天12小时带宽跑满三分之二的流量，剩余12小时为流量低峰期。</p>
+                </blockquote>
             <?php
             endif;
             ?>
@@ -185,6 +192,12 @@ if(!defined('IN_APP')){
         ?>
     </div>
 </div>
+<div class="footer">
+    <a href="https://github.com/daxingplay/bandwidth-cal" id="github-ribbon">
+        <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+</div>
+
 <script type="text/javascript" src="<?php echo $_G['assets']; ?>common/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo $_G['assets']; ?>bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo $_G['assets']; ?>index/1.0/index.js"></script>

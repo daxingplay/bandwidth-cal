@@ -54,7 +54,7 @@ if($size && $pv && $_POST['form_submit'] == 'true'){
                     break;
                 case 'server':
                     $price = array(
-                        'server' => $real_pv / $price_array['server'][0] * $price_array['server'][1],
+                        'server' => ceil($real_pv / $price_array['server'][0]) * $price_array['server'][1],
                         'bandwidth' =>  cal_ladder_price($need_rate, $price_array['bandwidth'])
                     );
                     break;
@@ -69,12 +69,12 @@ if($size && $pv && $_POST['form_submit'] == 'true'){
         }
     }
 
+    $total_services = count($services);
+    $expense_average = number_format($expense_sum / $total_services, 2);
+
     $expense_sum = number_format($expense_sum, 2);
     $expense_sum_month = number_format($expense_sum * 30, 2);
     $expense_sum_year = number_format($expense_sum_month * 12, 2);
-
-    $total_services = count($services);
-    $expense_average = number_format($expense_sum / $total_services, 2);
 }
 
 include('./template/index.tpl.php');
