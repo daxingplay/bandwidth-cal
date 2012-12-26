@@ -6,6 +6,10 @@ define('APP_ROOT', substr(dirname(__FILE__), 0, -6));
 
 include (APP_ROOT.'./source/function/common.func.php');
 
+if(strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 6.0") || strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 7.0")){
+    exit('对不起，本工具不支持这些低端浏览器，请使用高级浏览器');
+}
+
 global $_G;
 $_G = array();
 $_G['PHP_SELF'] = htmlspecialchars(_get_script_url());
