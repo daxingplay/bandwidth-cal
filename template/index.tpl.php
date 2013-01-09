@@ -29,7 +29,7 @@ if(!defined('IN_APP')){
                 <div class="control-group">
                     <label class="control-label" for="J_PageSize">原页面大小</label>
                     <div class="controls">
-                        <input id="J_PageSize" type="text" name="size" value="<?php echo $size ? $size : ''; ?>" placeholder="原先页面大小或者你节省的大小" /> KB
+                        <input id="J_PageSize" type="text" name="size" value="<?php echo $size ? $size : ''; ?>" placeholder="原先页面大小" /> KB
                     </div>
                 </div>
                 <div class="control-group">
