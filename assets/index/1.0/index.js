@@ -28,6 +28,29 @@
         hideResultBtn.hide();
         showResultBtn.show();
         fullResult.fadeOut();
-    })
+    });
+
+    var savedMoney = $('#J_ResultGuess').attr('data-num');
+    if(savedMoney){
+
+        var ladder = {};
+
+        function generateLine(msg){
+            return '<p>' + msg + '</p>';
+        }
+
+        function moneyDataShow(money){
+            var html = '';
+            if(savedMoney < 100){
+                html += generateLine('您省的太少了，我懒得说了');
+                return html;
+            }
+            if(savedMoney < 1000){
+                html += generateLine('您省了' + parseInt(savedMoney, 10) + '张大团结');
+            }
+        }
+
+
+    }
 
 })(jQuery);

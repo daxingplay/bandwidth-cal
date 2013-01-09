@@ -6,6 +6,29 @@
  * @description
  */
 
+function getglobal($key, $group = null) {
+    global $_G;
+    $key = explode('/', $group === null ? $key : $group.'/'.$key);
+    $v = &$_G;
+    foreach ($key as $k) {
+        if (!isset($v[$k])) {
+            return null;
+        }
+        $v = &$v[$k];
+    }
+    return $v;
+}
+
+/**
+ * @param $size
+ * @param string $unit, (k, m, g) in short for kb, mb, gb.
+ * @return string
+ */
+function format_bandwidth($size, $unit = 'k'){
+    $size_mb = $unit == 'k' ? $size / 1024 : ($unit == 'm' ? $size : $size * 1024);
+    return $size_mb < 10240 ? number_format($size_mb, 2) . 'MB' : number_format($size_mb / 1024, 2) . 'GB';
+}
+
 function cal_ladder_price($size, $price_array){
     $total = 0;
     $last_limit = 0;

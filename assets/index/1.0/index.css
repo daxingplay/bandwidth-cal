@@ -33,3 +33,50 @@
 .ps-words {
     font-size: 12px;
 }
+
+.expenses-full-result .old,
+.expenses-full-result .new {
+    display: block;
+}
+.expenses-full-result .name {
+    vertical-align: middle;
+}
+
+.expenses-full-compare .old {
+    color: #999;
+}
+.expenses-full-compare .new {
+    color: #C09853;
+}
+
+.expenses-compare p {
+    line-height: 30px;
+}
+.expenses-compare .old,
+.expenses-compare .new {
+    font-size: 20px;
+}
+.expenses-compare .yen {
+    font-size: 14px;
+}
+.expenses-compare .old {
+    color: #3A87AD;
+}
+.expenses-compare .new {
+    color: #468847;
+}
+.expenses-compare .saved {
+    line-height: 125px;
+    font-size: 16px;
+}
+.expenses-compare .saved em {
+    font-size: 60px;
+    color: #F60;
+}
+.expenses-compare .saved .yen {
+    font-size: 40px;
+    color: #666;
+}
+.expenses-compare .saved .unit {
+    font-size: 18px;
+}

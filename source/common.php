@@ -5,6 +5,7 @@ error_reporting(0);
 define('APP_ROOT', substr(dirname(__FILE__), 0, -6));
 
 include (APP_ROOT.'./source/function/common.func.php');
+include (APP_ROOT.'./config/services.php');
 
 if(strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 6.0") || strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 7.0")){
     exit('对不起，本工具不支持这些低端浏览器，请使用高级浏览器');
@@ -33,3 +34,5 @@ if(defined('SUB_DIR')) {
 }
 
 $_G['assets'] = $_G['siteurl'].'assets/';
+
+$_G['services'] = $services;
